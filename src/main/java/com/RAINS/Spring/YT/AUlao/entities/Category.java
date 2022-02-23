@@ -1,12 +1,19 @@
 package com.RAINS.Spring.YT.AUlao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private long id;
     private String name;
+
+    @JsonIgnore
+    private List<Product> products = new ArrayList<>();
 
     public Category(){}
 
@@ -32,6 +39,9 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
 
     @Override
     public int hashCode() {
