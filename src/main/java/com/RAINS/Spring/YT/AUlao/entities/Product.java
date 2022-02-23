@@ -1,15 +1,27 @@
 package com.RAINS.Spring.YT.AUlao.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Product implements Serializable {
-    private static final long serialVersionUID=1L;
 
+@Entity
+public class Product implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
+
+    public Product() {
+    }
+
 
     public Long getId() {
         return id;
